@@ -1,0 +1,44 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: networkmanager-composition
+spec:
+  compositeTypeRef:
+    apiVersion: example.crossplane.io/v1
+    kind: XManager
+  mode: Pipeline
+  pipeline:
+  - step: fetch-clusters
+    functionRef:
+      name: function-extra-resources-with-select-all
+    input:
+      apiVersion: extra-resources.fn.yzdann.io/v1beta1
+      kind: Input
+      spec:
+        extraResources:
+          - kind: Cluster
+            into: AllClusters
+            apiVersion: example.crossplane.io/v1
+            type: Selector
+            selector: {}
+  - step: create-networks
+    functionRef:
+      name: function-go-templating
+    input:
+      apiVersion: gotemplating.fn.crossplane.io/v1beta1
+      kind: GoTemplate
+      source: Inline
+      inline:
+        template: |
+          {{- $clusters := index (index .context "apiextensions.crossplane.io/extra-resources") "AllClusters" }}
+          {{- range $i, $cluster := $clusters }}
+          ---
+          apiVersion: example.crossplane.io/v1
+          kind: Network
+          metadata:
+            namespace: default
+            name: {{ index (index $cluster "metadata") "name" }}-networkmanager
+            annotations:
+              gotemplating.fn.crossplane.io/composition-resource-name: {{ printf "networkmanager-%d" $i }}
+          spec: {}
+          {{- end }}

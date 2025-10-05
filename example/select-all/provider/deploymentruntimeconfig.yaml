@@ -1,0 +1,12 @@
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: provider-kubernetes
+  labels:
+spec:
+  deploymentTemplate:
+    metadata:
+      labels:
+  serviceAccountTemplate:
+    metadata:
+      name: provider-kubernetes

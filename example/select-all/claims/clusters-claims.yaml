@@ -1,0 +1,31 @@
+apiVersion: example.crossplane.io/v1
+kind: Cluster
+metadata:
+  name: cluster-1
+  labels:
+    environment: staging
+spec: {}
+---
+apiVersion: example.crossplane.io/v1
+kind: Cluster
+metadata:
+  name: cluster-2
+  labels:
+    environment: production
+spec: {}
+---
+apiVersion: example.crossplane.io/v1
+kind: Cluster
+metadata:
+  name: cluster-3
+  labels:
+    environment: staging
+spec: {}
+---
+apiVersion: example.crossplane.io/v1
+kind: Cluster
+metadata:
+  name: cluster-4
+  labels:
+    environment: production
+spec: {}

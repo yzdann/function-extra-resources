@@ -1,0 +1,25 @@
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function-extra-resources-with-select-all
+  namespace: crossplane-system
+spec:
+  package: ttl.sh/yzdann/function-extra-resources-with-select-all:3h
+  packagePullPolicy: Always
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function-extra-resources
+  namespace: crossplane-system
+spec:
+# package: ttl.sh/function-e-r-v2:3h
+  package: xpkg.upbound.io/crossplane-contrib/function-extra-resources:v0.0.3
+  packagePullPolicy: Always
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function-go-templating
+spec:
+  package: xpkg.upbound.io/crossplane-contrib/function-go-templating:v0.8.0
