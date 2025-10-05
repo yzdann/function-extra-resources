@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.16.0
-  name: inputs.extra-resources.fn.crossplane.io
+  name: inputs.extra-resources.fn.yzdann.io
 spec:
-  group: extra-resources.fn.crossplane.io
+  group: extra-resources.fn.yzdann.io
   names:
     categories:
     - crossplane

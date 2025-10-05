@@ -1,6 +1,6 @@
 // Package v1beta1 contains the input type for this Function
 // +kubebuilder:object:generate=true
-// +groupName=extra-resources.fn.crossplane.io
+// +groupName=extra-resources.fn.yzdann.io
 // +versionName=v1beta1
 package v1beta1
 

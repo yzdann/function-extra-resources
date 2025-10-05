@@ -153,9 +153,10 @@ func buildRequirements(in *v1beta1.Input, xr *resource.Composite) (*fnv1.Require
 					matchLabels[selector.Key] = value
 				}
 			}
-			if len(matchLabels) == 0 {
-				continue
-			}
+			// Allow select all!
+			// if len(matchLabels) == 0 {
+			//	continue
+			// }
 			extraResources[extraResName] = &fnv1.ResourceSelector{
 				ApiVersion: extraResource.APIVersion,
 				Kind:       extraResource.Kind,
